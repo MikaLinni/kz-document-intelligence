@@ -216,3 +216,77 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# KZ Document Intelligence project-specific ignores
+# Environments, caches and local configuration
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+.env.*
+.cache/
+.huggingface/
+huggingface/
+huggingface_cache/
+hf_cache/
+HF_HOME/
+models--*/
+
+# Datasets and checkpoints
+*.parquet
+*.jsonl
+*.jsonl.gz
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+bilingual_v1/
+datasets/
+/data/*
+!/data/README.md
+/models/*
+!/models/README.md
+
+# Keep only the reviewed baseline archive under results
+/results/*
+!/results/baseline/
+
+# KZ Document Intelligence project-specific ignores
+# Environments, caches and local configuration
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+.env.*
+.cache/
+.huggingface/
+huggingface/
+huggingface_cache/
+hf_cache/
+HF_HOME/
+models--*/
+
+# Datasets and checkpoints
+*.parquet
+*.jsonl
+*.jsonl.gz
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+bilingual_v1/
+datasets/
+/data/*
+!/data/README.md
+/models/*
+!/models/README.md
+
+# Keep only the reviewed baseline archive under results
+/results/*
+!/results/baseline/

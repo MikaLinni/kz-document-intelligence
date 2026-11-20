@@ -1,0 +1,218 @@
+{
+  "selection": {
+    "epochs_completed": 4,
+    "best_epoch": 2,
+    "best_dev_recall@10": 0.9918032786885246,
+    "lora_comparison_epoch": 2,
+    "lora_comparison_dev_recall@10": 0.9918032786885246,
+    "epochs_without_improvement": 2
+  },
+  "configuration": {
+    "seed": 42,
+    "base_model": "BAAI/bge-m3",
+    "base_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+    "device": "mps",
+    "dtype": "float32",
+    "attention": "sdpa",
+    "pooling": "normalized_cls",
+    "versions": {
+      "python": "3.13.2",
+      "macOS": "15.5",
+      "torch": "2.14.1",
+      "transformers": "5.19.0",
+      "peft": "0.21.2",
+      "accelerate": "1.15.0",
+      "rank-bm25": "0.2.2",
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "pyarrow": "26.0.0",
+      "tokenizers": "0.23.3",
+      "huggingface-hub": "1.33.0"
+    },
+    "frozen_sha256": {
+      "bge_m3_training_records_clean.jsonl": "48e16a984302f502cc9dd656f1a98e111b2ced6ade400759c9b9636934a40d5f",
+      "build_clean_splits.py": "84363cee991ab2ac506b22bc06bcf90f42174d20b4a2fecf0e226925e70efb31",
+      "prepare_training_data.py": "c2285cd159384f2c2f8f2007e5762527a1527481617d9bdc37483c75add5c82c",
+      "repair_all_splits.py": "39ef4f99c31a16ed79dbecf020fcd3ace6d6f5aa6a49c623b8f832485ab46e39",
+      "retrieval_dev_clean.parquet": "75480782da82945ad7aea5e4ea5ee433fbf185f685db2d3d68c815ca400a384a",
+      "retrieval_test_clean.parquet": "cc396afb4afed353ba07e2dbf79b9f78d35b23f161be95ad6d2b27628b807155",
+      "retrieval_train_clean.parquet": "498e05dd5f4134a855639dc635db906bc36b0cddd5766cb600437e3dea7bd4c8"
+    },
+    "corpus_sha256": "b65485a62e7f9707049bd325f6c3b900c1b96eee565b3ac35fbedc10fc41515a",
+    "scripts_sha256": {
+      "train_bge_m3_lora.py": "5cac187c877b4f9c4deff16e8a223ba55124879d6c692eb1701961549531e191",
+      "evaluate_test.py": "cd040fdda5207aab42d10e6e7ee290ebbbcff1323f7d5a0ebe26a762f2a02eae"
+    },
+    "candidate_document_ids": [
+      "1",
+      "3559",
+      "4054",
+      "7833",
+      "15924",
+      "16159",
+      "26556"
+    ],
+    "candidate_counts": {
+      "ru": 1692,
+      "kk": 1317
+    },
+    "candidate_filter": "same language across all seven documents; ties by ascending chunk_id",
+    "query_max_length": 128,
+    "passage_max_length": 320,
+    "query_batch_size": 16,
+    "passage_batch_size": 8,
+    "bm25": {
+      "k1": 1.5,
+      "b": 0.75,
+      "epsilon": 0.25,
+      "tokenization": "NFKC, lowercase, dash normalization, Unicode word tokens"
+    },
+    "rrf_k": 60,
+    "rrf_depth": "all same-language candidates",
+    "lora": {
+      "r": 16,
+      "lora_alpha": 32,
+      "lora_dropout": 0.05,
+      "target_modules": [
+        "query",
+        "value"
+      ],
+      "bias": "none",
+      "trainable_parameters": 1572864
+    },
+    "gradient_checkpointing": {
+      "use_reentrant": false
+    },
+    "max_epochs": 5,
+    "patience": 2,
+    "microbatch_queries": 1,
+    "negatives_per_query": 3,
+    "gradient_accumulation": 8,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.01,
+    "temperature": 0.05,
+    "optimizer": "AdamW",
+    "max_grad_norm": 1.0,
+    "scheduler": "linear",
+    "warmup_ratio": 0.1,
+    "selection": "strict DEV Recall@10 improvement; earliest epoch wins ties",
+    "patience_reference": "zero-shot or an improving LoRA epoch"
+  },
+  "metrics": {
+    "bm25": {
+      "ru": {
+        "queries": 244,
+        "recall@5": 0.9098360655737705,
+        "recall@10": 0.9385245901639344,
+        "mrr@10": 0.8337594327348425,
+        "ndcg@10": 0.8594092961707005
+      },
+      "kk": {
+        "queries": 24,
+        "recall@5": 0.9166666666666666,
+        "recall@10": 0.9583333333333334,
+        "mrr@10": 0.8819444444444445,
+        "ndcg@10": 0.9007527789271225
+      },
+      "overall": {
+        "queries": 268,
+        "recall@5": 0.9104477611940298,
+        "recall@10": 0.9402985074626866,
+        "mrr@10": 0.8380745084103293,
+        "ndcg@10": 0.863111697611574
+      }
+    },
+    "zero_shot": {
+      "ru": {
+        "queries": 244,
+        "recall@5": 0.9180327868852459,
+        "recall@10": 0.9344262295081968,
+        "mrr@10": 0.8007042024460057,
+        "ndcg@10": 0.8340216243608396
+      },
+      "kk": {
+        "queries": 24,
+        "recall@5": 0.9583333333333334,
+        "recall@10": 1.0,
+        "mrr@10": 0.8329861111111111,
+        "ndcg@10": 0.8735073829651329
+      },
+      "overall": {
+        "queries": 268,
+        "recall@5": 0.9216417910447762,
+        "recall@10": 0.9402985074626866,
+        "mrr@10": 0.8035951196398957,
+        "ndcg@10": 0.8375576624448061
+      }
+    },
+    "bm25_rrf_zero_shot": {
+      "ru": {
+        "queries": 244,
+        "recall@5": 0.9262295081967213,
+        "recall@10": 0.9508196721311475,
+        "mrr@10": 0.85470010408535,
+        "ndcg@10": 0.8784402342566664
+      },
+      "kk": {
+        "queries": 24,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.8888888888888888,
+        "ndcg@10": 0.9176549589285763
+      },
+      "overall": {
+        "queries": 268,
+        "recall@5": 0.9328358208955224,
+        "recall@10": 0.9552238805970149,
+        "mrr@10": 0.8577617863065624,
+        "ndcg@10": 0.8819520006451956
+      }
+    },
+    "lora": {
+      "ru": {
+        "queries": 244,
+        "recall@5": 0.9180327868852459,
+        "recall@10": 0.9549180327868853,
+        "mrr@10": 0.8106654957064794,
+        "ndcg@10": 0.8460601619719602
+      },
+      "kk": {
+        "queries": 24,
+        "recall@5": 0.9583333333333334,
+        "recall@10": 1.0,
+        "mrr@10": 0.8149801587301586,
+        "ndcg@10": 0.8606999646717125
+      },
+      "overall": {
+        "queries": 268,
+        "recall@5": 0.9216417910447762,
+        "recall@10": 0.9589552238805971,
+        "mrr@10": 0.811051883439943,
+        "ndcg@10": 0.8473711890794007
+      }
+    },
+    "bm25_rrf_lora": {
+      "ru": {
+        "queries": 244,
+        "recall@5": 0.9344262295081968,
+        "recall@10": 0.9590163934426229,
+        "mrr@10": 0.86028981264637,
+        "ndcg@10": 0.8848029234175764
+      },
+      "kk": {
+        "queries": 24,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.8833333333333333,
+        "ndcg@10": 0.9129404925633487
+      },
+      "overall": {
+        "queries": 268,
+        "recall@5": 0.9402985074626866,
+        "recall@10": 0.9626865671641791,
+        "mrr@10": 0.8623534115138592,
+        "ndcg@10": 0.8873227057291381
+      }
+    }
+  }
+}

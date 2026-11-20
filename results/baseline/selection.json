@@ -1,0 +1,8 @@
+{
+  "epochs_completed": 4,
+  "best_epoch": 2,
+  "best_dev_recall@10": 0.9918032786885246,
+  "lora_comparison_epoch": 2,
+  "lora_comparison_dev_recall@10": 0.9918032786885246,
+  "epochs_without_improvement": 2
+}
